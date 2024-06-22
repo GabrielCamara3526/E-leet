@@ -31,7 +31,7 @@ def translate():
                 break
         else:
             translated += letter
-    result.configure(text=translated)
+    result_label.configure(text=translated)
 
 root = Tk()
 root.geometry("720x480")
@@ -55,7 +55,7 @@ submit_button = Button(root, font=('Arial', 14, 'bold'), text='Submit', width=14
                        command=translate)
 submit_button.pack()
 
-result = Label(root, font=('Helvetica', 24), bg='#242424', fg="white")
-result.pack()
+result_label = Label(root, font=('Helvetica', 24), bg='#242424', fg="white", wraplength=585)
+result_label.pack()
 
 root.mainloop()
