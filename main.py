@@ -1,12 +1,12 @@
 from tkinter import *
 import ctypes as ct
 
-leet_list = {"a": "4",
-        "e": "3",
-        "o": "0",
-        "l": "1",
-        "s": "5",
-        "z": "2"}
+leet_list = {("A", "a"): "4",
+             ("E", "e"): "3",
+             ("O", "o"): "0",
+             ("L", "l"): "1",
+             ("S", "s"): "5",
+             ("Z", "z"): "2"}
 
 def dark_title_bar(window):
     """
@@ -25,8 +25,10 @@ def translate():
     translated = ""
     entry_text = main_entry.get()
     for letter in entry_text:
-        if letter in leet_list:
-            translated += leet_list[letter]
+        for key in leet_list:
+            if letter in key:
+                translated += leet_list[key]
+                break
         else:
             translated += letter
     result.configure(text=translated)
