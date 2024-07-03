@@ -1,5 +1,6 @@
 from tkinter import *
 import ctypes as ct
+import clipboard
 
 leet_list = {("A", "a"): "4",
              ("E", "e"): "3",
@@ -33,6 +34,12 @@ def translate(event=None):
             translated += letter
     result_label.configure(text=translated)
 
+def copy_to_clipboard():
+    text_to_copy = result_label.cget("text")
+    clipboard.copy(text_to_copy)
+    copied_message.pack(side='bottom')
+    root.after(2000, copied_message.pack_forget)
+
 root = Tk()
 root.geometry("720x480")
 root.resizable(False, False)
@@ -57,6 +64,14 @@ submit_button = Button(root, font=('Arial', 14, 'bold'), text='Submit', width=14
 submit_button.pack()
 
 result_label = Label(root, font=('Helvetica', 24), bg='#242424', fg="white", wraplength=585)
-result_label.pack()
+result_label.pack(pady=10)
+
+copied_message = Label(root, font=('Arial', 14), text='Successfully Copied!', bg='#242424', fg='white')
+
+copy_button = Button(root, font=('Arial', 14, 'bold'), text='Copy to Clipboard', 
+                     bg='red', fg='white', activebackground='darkred', activeforeground='white',
+                     border=0, command=copy_to_clipboard)
+
+copy_button.pack(side='bottom')
 
 root.mainloop()
