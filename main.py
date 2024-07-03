@@ -21,7 +21,7 @@ def dark_title_bar(window):
     value = ct.c_int(value)
     set_window_attribute(hwnd, 20, ct.byref(value), 4)
 
-def translate():
+def translate(event=None):
     translated = ""
     entry_text = main_entry.get()
     for letter in entry_text:
@@ -40,12 +40,13 @@ root.title("E-leet")
 root.configure(bg="#242424")
 dark_title_bar(root)
 
-main_label = Label(root, font=("Arial", 18, 'bold'), text="Insert the words you want to translate: ",
+main_label = Label(root, font=("Arial", 18, 'bold'), text="Insert the words you will translate: ",
                    bg="#242424", fg='white')
 main_label.pack()
 
 main_entry = Entry(root, font=("Helvetica", 18), width=35)
 main_entry.pack(padx=10, pady=10)
+main_entry.bind('<Return>', translate)
 
 submit_button = Button(root, font=('Arial', 14, 'bold'), text='Submit', width=14,
                        bg="green",
