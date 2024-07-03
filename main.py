@@ -40,6 +40,9 @@ def copy_to_clipboard():
     copied_message.pack(side='bottom')
     root.after(2000, copied_message.pack_forget)
 
+def clear_entry():
+    main_entry.delete(0, END)
+
 root = Tk()
 root.geometry("720x480")
 root.resizable(False, False)
@@ -55,13 +58,23 @@ main_entry = Entry(root, font=("Helvetica", 18), width=35)
 main_entry.pack(padx=10, pady=10)
 main_entry.bind('<Return>', translate)
 
-submit_button = Button(root, font=('Arial', 14, 'bold'), text='Submit', width=14,
+top_btns = Frame(root)
+top_btns.pack()
+
+submit_button = Button(top_btns, font=('Arial', 14, 'bold'), text='Submit', width=14,
                        bg="green",
                        fg='white',
                        activebackground='darkgreen',
                        activeforeground='white',
                        command=translate)
-submit_button.pack()
+submit_button.pack(side='left')
+
+clear_entry = Button(top_btns,  font=('Arial', 14, 'bold'), text='Clear Text', width=14,
+                       bg="red",
+                       fg='white',
+                       activebackground='darkred',
+                       activeforeground='white', command=clear_entry)
+clear_entry.pack(side='right')
 
 result_label = Label(root, font=('Helvetica', 24), bg='#242424', fg="white", wraplength=585)
 result_label.pack(pady=10)
@@ -69,7 +82,7 @@ result_label.pack(pady=10)
 copied_message = Label(root, font=('Arial', 14), text='Successfully Copied!', bg='#242424', fg='white')
 
 copy_button = Button(root, font=('Arial', 14, 'bold'), text='Copy to Clipboard', 
-                     bg='red', fg='white', activebackground='darkred', activeforeground='white',
+                     bg='purple', fg='white', activebackground='darkblue', activeforeground='white',
                      border=0, command=copy_to_clipboard)
 
 copy_button.pack(side='bottom')
