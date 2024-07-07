@@ -40,8 +40,8 @@ def copy_to_clipboard():
     copied_message.pack(side='bottom')
     root.after(2000, copied_message.pack_forget)
 
-def clear_entry():
-    main_entry.delete(0, END)
+def clear_result_label():
+    result_label.configure(text='')
 
 root = Tk()
 root.geometry("720x480")
@@ -69,12 +69,12 @@ submit_button = Button(top_btns, font=('Arial', 14, 'bold'), text='Submit', widt
                        command=translate)
 submit_button.pack(side='left')
 
-clear_entry = Button(top_btns,  font=('Arial', 14, 'bold'), text='Clear Text', width=14,
+clear_result = Button(top_btns,  font=('Arial', 14, 'bold'), text='Clear Text', width=14,
                        bg="red",
                        fg='white',
                        activebackground='darkred',
-                       activeforeground='white', command=clear_entry)
-clear_entry.pack(side='right')
+                       activeforeground='white', command=clear_result_label)
+clear_result.pack(side='right')
 
 result_label = Label(root, font=('Helvetica', 24), bg='#242424', fg="white", wraplength=585)
 result_label.pack(pady=10)
