@@ -54,7 +54,7 @@ main_label = Label(root, font=("Arial", 18, 'bold'), text="Insert the words you 
                    bg="#242424", fg='white')
 main_label.pack()
 
-main_entry = Entry(root, font=("Helvetica", 18), width=35)
+main_entry = Entry(root, font=("Helvetica", 18), width=35, border=0)
 main_entry.pack(padx=10, pady=10)
 main_entry.bind('<Return>', translate)
 
