@@ -73,12 +73,12 @@ entry_text = StringVar()
 main_entry = Entry(entry_frame, font=("Helvetica", 18), width=42, textvariable=entry_text)
 main_entry.pack(padx=10, pady=10, side='left')
 
-char_count_label = Label(entry_frame, font=("Helvetica", 17), bg='white', fg='black')
-char_count_label.pack(side='right', anchor='e')
-
 max_length = 203
 main_entry.bind('<Return>', translate)
 main_entry.bind("<KeyRelease>", lambda event: on_key_press(event, entry_text, max_length))
+
+char_count_label = Label(entry_frame, font=("Helvetica", 17), bg='white', fg='black')
+char_count_label.pack(side='right', anchor='e')
 
 update_character_count()
 
