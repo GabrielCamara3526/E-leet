@@ -43,6 +43,18 @@ def copy_to_clipboard():
 def clear_result_label():
     result_label.configure(text='')
 
+def limit_characters(entry_text, max_length):
+    if len(entry_text.get()) > max_length:
+        entry_text.set(entry_text.get()[:max_length])
+
+def on_key_press(event, entry_text, max_length):
+    limit_characters(entry_text, max_length)
+    update_character_count()
+
+def update_character_count():
+    current_length = len(main_entry.get())
+    char_count_label.config(text=f"{max_length - current_length}")
+
 root = Tk()
 root.geometry("720x480")
 root.resizable(False, False)
@@ -54,9 +66,21 @@ main_label = Label(root, font=("Arial", 18, 'bold'), text="Insert the words you 
                    bg="#242424", fg='white')
 main_label.pack()
 
-main_entry = Entry(root, font=("Helvetica", 18), width=35)
-main_entry.pack(padx=10, pady=10)
+entry_frame = Frame(root, bg="#242424")
+entry_frame.pack()
+
+entry_text = StringVar()
+main_entry = Entry(entry_frame, font=("Helvetica", 18), width=42, textvariable=entry_text)
+main_entry.pack(padx=10, pady=10, side='left')
+
+char_count_label = Label(entry_frame, font=("Helvetica", 17), bg='white', fg='black')
+char_count_label.pack(side='right', anchor='e')
+
+max_length = 203
 main_entry.bind('<Return>', translate)
+main_entry.bind("<KeyRelease>", lambda event: on_key_press(event, entry_text, max_length))
+
+update_character_count()
 
 top_btns = Frame(root)
 top_btns.pack()
@@ -69,7 +93,7 @@ submit_button = Button(top_btns, font=('Arial', 14, 'bold'), text='Submit', widt
                        command=translate)
 submit_button.pack(side='left')
 
-clear_result = Button(top_btns,  font=('Arial', 14, 'bold'), text='Clear Text', width=14,
+clear_result = Button(top_btns,  font=('Arial', 14, 'bold'), text='Clear Result', width=14,
                        bg="red",
                        fg='white',
                        activebackground='darkred',
