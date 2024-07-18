@@ -100,6 +100,7 @@ clear_result = Button(top_btns,  font=('Arial', 14, 'bold'), text='Clear Result'
                        activeforeground='white', command=clear_result_label)
 clear_result.pack(side='right')
 
+# The result label holds 215 characters before stretching too much
 result_label = Label(root, font=('Helvetica', 24), bg='#242424', fg="white", wraplength=585)
 result_label.pack(pady=10)
 
