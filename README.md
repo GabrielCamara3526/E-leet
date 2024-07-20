@@ -6,6 +6,6 @@ Download: [here](https://github.com/GabrielCamara3526/E-leet/releases)
 
 ![Captura de tela 2024-07-18 161531](https://github.com/user-attachments/assets/cda3024f-7990-4289-9c6e-f58d8b55a189)
 
-It works for Windows, and a Linux version is currently in development.
+Fow now, It works on Windows and a Linux version is under development.
 
 Thanks for supporting E-leet!
