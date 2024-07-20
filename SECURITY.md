@@ -9,5 +9,5 @@
 
 ## Reporting a Vulnerability
 
-I appreciate your perceptive use of this tool, and i'm certain you can propose your vulnerability report to the provided [E-mail](mailto:gomescamara1512@gmail.com) under this Project's household.
+I appreciate your perceptive use of this tool, and i'm certain you can propose your vulnerability report to the provided [Email](mailto:gomescamara1512@gmail.com) under this Project's household.
 
