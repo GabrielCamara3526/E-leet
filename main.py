@@ -9,18 +9,6 @@ leet_list = {("A", "a"): "4",
              ("S", "s"): "5",
              ("Z", "z"): "2"}
 
-def dark_title_bar(window):
-    """
-    MORE INFO:
-    https://learn.microsoft.com/en-us/windows/win32/api/dwmapi/ne-dwmapi-dwmwindowattribute
-    """
-    window.update()
-    set_window_attribute = ct.windll.dwmapi.DwmSetWindowAttribute
-    get_parent = ct.windll.user32.GetParent
-    hwnd = get_parent(window.winfo_id())
-    value = 2
-    value = ct.c_int(value)
-    set_window_attribute(hwnd, 20, ct.byref(value), 4)
 
 def translate(event=None):
     translated = ""
@@ -60,7 +48,6 @@ root.geometry("720x480")
 root.resizable(False, False)
 root.title("E-leet")
 root.configure(bg="#242424")
-dark_title_bar(root)
 
 main_label = Label(root, font=("Arial", 18, 'bold'), text="Insert the words you will translate: ",
                    bg="#242424", fg='white')
